@@ -71,11 +71,13 @@ def appointment_list(request, pk):
             return JsonResponse(appt_list.data, safe=False)
     elif request.method == 'POST':
         data = JSONParser().parse(request)
+        if len(appts.filter(date_time=data['date_time'])) >= 3:
+            return HttpResponse("Doctor has more than 3 appointments at that time.", status=400)
 
         serializer = AppointmentSerializer(data=data)
         if serializer.is_valid():
             serializer.save(doctor_id=pk)
-            return JsonResponse(serializer.data, status=201)
+            return JsonResponse(serializer.data, status=200)
     return JsonResponse(serializer.errors, status=400)
 
 
