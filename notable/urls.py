@@ -18,16 +18,23 @@ from django.urls import path
 from rest_framework import routers
 from api.views import UserViewSet, GroupViewSet 
 from shiren.views import SwordViewSet
+from doctor_appointment.views import doctor_list, doctor, appointment_list, appointment
 from django.conf.urls import include
-
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'groups', GroupViewSet)
 router.register(r'shiren', SwordViewSet, basename="shiren")
+# router.register(r'doctors', DoctorViewSet, basename="doctor")
+# router.register(r'appointments', AppointmentViewSet, basename="appointment")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('shiren/', include('rest_framework.urls', namespace='shiren'))
+    path('shiren/', include('rest_framework.urls', namespace='shiren')),
+    path('doctors/', doctor_list),
+    path('doctors/<int:pk>/', doctor),
+    path('appointment/<int:pk>/', appointment),
+    path('doctors/<int:pk>/appointments/', appointment_list),
+    path('appointments/', include('rest_framework.urls', namespace='appointments'))
 ]
