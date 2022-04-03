@@ -76,7 +76,8 @@ def daily_appointments(request, pk):
     date = request.GET.get('date')
     try:
         Doctors.objects.get(pk=pk)
-    except Doctors.DoesNotExist: return HttpResponse("doctor not found", status=404)
+    except Doctors.DoesNotExist: 
+        return HttpResponse("doctor not found", status=404)
     appt_date = datetime.strptime(date, "%Y-%m-%d")
     dates = Appointments.objects.filter(doctor_id=pk, date_time__contains=appt_date.date())
     serializer = AppointmentSerializer(dates, many=True)
