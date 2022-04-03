@@ -9,14 +9,6 @@ from .serializers import DoctorSerializer, AppointmentSerializer
 
 
 
-def validate_time(value):
-    if not value:
-        raise serializers.ValidationError("Time isn't right")
-    return value
-
-
-
-
 
 @csrf_exempt
 def doctor_list(request):
@@ -79,6 +71,14 @@ def appointment_list(request, pk):
             serializer.save(doctor_id=pk)
             return JsonResponse(serializer.data, status=200)
     return JsonResponse(serializer.errors, status=400)
+
+@csrf_exempt
+def daily_appointments(request, pk):
+    date = request.GET.get('date')
+    appt_date = datetime.strptime(date, "%Y-%m-%d")
+    dates = Appointments.objects.filter(doctor_id=pk, date_time__contains=appt_date.date())
+    serializer = AppointmentSerializer(dates, many=True)
+    return JsonResponse(serializer.data, safe=False)
 
 
 
