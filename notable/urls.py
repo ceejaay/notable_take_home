@@ -16,29 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
-from api.views import UserViewSet, GroupViewSet 
-from shiren.views import SwordViewSet
 from doctor_appointment.views import doctor_list, doctor, appointment_list, appointment, daily_appointments
 from django.conf.urls import include
 router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
-router.register(r'groups', GroupViewSet)
-router.register(r'shiren', SwordViewSet, basename="shiren")
-# router.register(r'doctors', DoctorViewSet, basename="doctor")
-# router.register(r'appointments', AppointmentViewSet, basename="appointment")
 
 
-# class DateConverter:
-#     regex = '\d{4}-\d{2}-\d{2}'
-
-#     def to_python(self, value):
-#         return
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('shiren/', include('rest_framework.urls', namespace='shiren')),
     path('doctors/', doctor_list),
     path('doctors/<int:pk>/', doctor),
     path('appointment/<int:pk>/', appointment),
