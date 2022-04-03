@@ -18,7 +18,7 @@ from django.urls import path
 from rest_framework import routers
 from api.views import UserViewSet, GroupViewSet 
 from shiren.views import SwordViewSet
-from doctor_appointment.views import doctor_list, doctor, appointment_list, appointment
+from doctor_appointment.views import doctor_list, doctor, appointment_list, appointment, daily_appointments
 from django.conf.urls import include
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
@@ -26,6 +26,13 @@ router.register(r'groups', GroupViewSet)
 router.register(r'shiren', SwordViewSet, basename="shiren")
 # router.register(r'doctors', DoctorViewSet, basename="doctor")
 # router.register(r'appointments', AppointmentViewSet, basename="appointment")
+
+
+# class DateConverter:
+#     regex = '\d{4}-\d{2}-\d{2}'
+
+#     def to_python(self, value):
+#         return
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,5 +43,6 @@ urlpatterns = [
     path('doctors/<int:pk>/', doctor),
     path('appointment/<int:pk>/', appointment),
     path('doctors/<int:pk>/appointments/', appointment_list),
+    path('daily-appointments/<int:pk>/', daily_appointments),
     path('appointments/', include('rest_framework.urls', namespace='appointments'))
 ]
