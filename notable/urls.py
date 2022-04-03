@@ -30,5 +30,5 @@ urlpatterns = [
     path('appointment/<int:pk>/', appointment),
     path('doctors/<int:pk>/appointments/', appointment_list),
     path('daily-appointments/<int:pk>', daily_appointments),
-    path('appointments/', include('rest_framework.urls', namespace='appointments'))
+    # path('appointments/', include('rest_framework.urls', namespace='appointments'))
 ]
