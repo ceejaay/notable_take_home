@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-arkw$c^b%t#s4ulx=+v6l-b@js#1tz)g9wfb$d$pwd#=0_+2xe
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+APPEND_SLASH=False
 
 # Application definition
 
@@ -37,9 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api',
     'rest_framework',
-    'shiren',
     'doctor_appointment',
 ]
 
@@ -126,8 +124,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-REST_FRAMEWORK = {
-        'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-        'PAGE_SIZE': 10
+# REST_FRAMEWORK = {
+#         'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+#         'PAGE_SIZE': 10
 
-        }
+#         }
