@@ -47,7 +47,6 @@ def appointment(request, pk):
     if request.method == 'GET':
         appt_data = AppointmentSerializer(appt)
         d = appt_data.data['date_time']
-        correct_time(d)
         return JsonResponse(appt_data.data)
     elif request.method == 'DELETE':
         appt.delete()
