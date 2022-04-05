@@ -129,3 +129,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #         'PAGE_SIZE': 10
 
 #         }
+import django_heroku
+django_heroku.settings(local())
