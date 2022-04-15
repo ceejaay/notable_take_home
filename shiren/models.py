@@ -9,6 +9,6 @@ class Prices(models.Model):
     price = models.IntegerField()
 
 class Scrolls(models.Model):
-    name = model.CharField()
-    price_id = models.ForeignKey('prices', on_delete.CASCADE)
+    name = models.CharField(max_length=128)
+    price_id = models.ForeignKey('prices', on_delete=models.CASCADE)
 
