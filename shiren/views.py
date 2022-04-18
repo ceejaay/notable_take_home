@@ -26,3 +26,10 @@ def prices(request):
 @csrf_exempt
 def scrolls(request):
     return JsonResponse({"scrolls": "all the scrolls"})
+
+@csrf_exempt
+def scroll_search(request, price):
+    price = Prices.objects.get(price=price)
+    scrolls = Scrolls.objects.filter(price_id=price.id)
+    return JsonReponse(scrolls.data)
+

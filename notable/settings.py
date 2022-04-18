@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'shiren',
     'doctor_appointment',
+    'fotomoto',
 ]
 
 MIDDLEWARE = [

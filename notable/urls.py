@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
 from api.views import UserViewSet, GroupViewSet 
-from shiren.views import prices, scrolls
+from shiren.views import prices, scrolls, scroll_search
+from fotomoto import views
 from doctor_appointment.views import doctor_list, doctor, appointment_list, appointment
 from django.conf.urls import include
 router = routers.DefaultRouter()
@@ -38,5 +39,7 @@ urlpatterns = [
     path('doctors/<int:pk>/appointments/', appointment_list),
     path('appointments/', include('rest_framework.urls', namespace='appointments')),
     path('shiren/prices', prices),
-    path('shiren/scrolls', scrolls)
+    path('shiren/scrolls', scrolls),
+    path('shiren/scrolls/<int:price>', scroll_search),
+    path('fotomoto/', views.index, name='index'),
 ]
