@@ -31,6 +31,8 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', "127.0.0.1, localhost").split(",")
 
+APPEND_SLASH=False
+
 
 # Application definition
 
@@ -41,9 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api',
     'rest_framework',
-    'shiren',
     'doctor_appointment',
     'fotomoto',
 ]
