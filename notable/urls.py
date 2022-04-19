@@ -16,6 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
+from fotomoto import views
+from django.conf.urls import include
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+router.register(r'groups', GroupViewSet)
+# router.register(r'shiren', SwordViewSet, basename="shiren")
+# router.register(r'doctors', DoctorViewSet, basename="doctor")
+# router.register(r'appointments', AppointmentViewSet, basename="appointment")
 from doctor_appointment.views import doctor_list, doctor, appointment_list, appointment, daily_appointments
 from django.conf.urls import include
 router = routers.DefaultRouter()
@@ -29,6 +37,6 @@ urlpatterns = [
     path('doctors/<int:pk>/', doctor),
     path('appointment/<int:pk>/', appointment),
     path('doctors/<int:pk>/appointments/', appointment_list),
-    path('daily-appointments/<int:pk>', daily_appointments),
-    # path('appointments/', include('rest_framework.urls', namespace='appointments'))
+    path('appointments/', include('rest_framework.urls', namespace='appointments')),
+    path('fotomoto/', views.index, name='index'),
 ]
