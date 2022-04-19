@@ -1,5 +1,14 @@
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.js" integrity="sha512-j7/1CJweOskkQiS5RD9W8zhEG9D9vpgByNGxPIqkO5KrXrwyDAroM9aQ9w8J7oRqwxGyz429hPVk/zR6IOMtSA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"
+    />
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"></script>
+
 <script type="text/javascript">
     function cliking () {
             console.log("werkeing")
@@ -10,14 +19,15 @@
     flex-start; border: 6px green dashed;">
 {% if pics %}
     {% for i in pics %}
+        {% if i.for_sale %}
+            <p>For Sale</p>
+        {% endif %}
     <a class="" href={{ i.url  }} 
        data-fancybox="gallery"
        data-caption="here is the captions {{ i.id }}"
        onclick="cliking()"
     >
-    </br>
-        <div  style="background-image: url({{ i.url  }}); height: 270; width: 480; border:
-            red solid 5px;"></div>
+        <img src="{{ i.url }}" style="height: 135; width: 240;">
     </a>
     {% endfor %}
 
@@ -25,5 +35,5 @@
 {% else %}
 <p>No images !!!!</p>
 {% endif %}
-<link rel="stylesheet" type="text/css" href="jquery.fancybox.min.css">
 </div>
+</body>
