@@ -1,0 +1,29 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.js" integrity="sha512-j7/1CJweOskkQiS5RD9W8zhEG9D9vpgByNGxPIqkO5KrXrwyDAroM9aQ9w8J7oRqwxGyz429hPVk/zR6IOMtSA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+    function cliking () {
+            console.log("werkeing")
+        }
+</script>
+
+<div class="container" style="max-width: 95%; height: 100%; display: flex; flex-flow: column wrap; align-content:
+    flex-start; border: 6px green dashed;">
+{% if pics %}
+    {% for i in pics %}
+    <a class="" href={{ i.url  }} 
+       data-fancybox="gallery"
+       data-caption="here is the captions {{ i.id }}"
+       onclick="cliking()"
+    >
+    </br>
+        <div  style="background-image: url({{ i.url  }}); height: 270; width: 480; border:
+            red solid 5px;"></div>
+    </a>
+    {% endfor %}
+
+
+{% else %}
+<p>No images !!!!</p>
+{% endif %}
+<link rel="stylesheet" type="text/css" href="jquery.fancybox.min.css">
+</div>
