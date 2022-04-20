@@ -19,8 +19,8 @@ from rest_framework import routers
 from fotomoto import views
 from django.conf.urls import include
 router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
-router.register(r'groups', GroupViewSet)
+# router.register(r'users', UserViewSet)
+# router.register(r'groups', GroupViewSet)
 # router.register(r'shiren', SwordViewSet, basename="shiren")
 # router.register(r'doctors', DoctorViewSet, basename="doctor")
 # router.register(r'appointments', AppointmentViewSet, basename="appointment")
