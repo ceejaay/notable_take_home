@@ -31,7 +31,7 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 
 # ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', "127.0.0.1, localhost:8000").split(",")
 ALLOWED_HOSTS = ['localhost', ".herokuapp.com"]
-CSRF_TRUSTED_ORIGINS = [".herokuapp.com"]
+CSRF_TRUSTED_ORIGINS = ["https://*.herokuapp.com"]
 
 APPEND_SLASH=False
 
