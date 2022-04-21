@@ -12,28 +12,28 @@
 <script type="text/javascript">
 
     function showCard(url) {
+            console.log("This isi workingf.")
             FOTOMOTO.API.showWindow(FOTOMOTO.API.PRINT, url)
-        }
+        };
 
 </script>
 
-<div class="container" style="max-width: 95%; height: 100%; display: flex; flex-flow: column wrap; align-content:
-    flex-start; border: 6px green dashed;">
+<div class="container" style="max-width: 95%; height: 100%; display: flex; flex-flow: column wrap; align-content: flex-start; border: 6px green dashed;">
 {% if pics %}
     {% for i in pics %}
         {% if i.for_sale %}
-    <a class="" href={{ i.url  }} 
-       data-fancybox="gallery"
-       data-caption="here is the captions {{ i.id }}"
-    >
-    <img src="{{ i.url }}" style="height: 135; width: 240;">
+    <a href={{ i.url  }}  onclick="showCard({{ i.url }})" data-fancybox="gallery" data-caption="here is the captions {{ i.id }}" style="border: dashed blue 5px;">
+
+    <div style="background-image: url({{ i.url }}); height: 135; width: 240;"></div>
+
     </a>
         {% else %}
     <a class="" href={{ i.url  }} 
        data-fancybox="gallery"
        data-caption="here is the captions {{ i.id }}"
     >
-        <img class="nofotomoto" src="{{ i.url }}" style="height: 135; width: 240;">
+
+    <div style="background-image: url({{ i.url }}); height: 135; width: 240;"></div>
     </a>
         {% endif %}
     {% endfor %}
