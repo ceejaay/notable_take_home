@@ -24,7 +24,6 @@ router = routers.DefaultRouter()
 # router.register(r'shiren', SwordViewSet, basename="shiren")
 # router.register(r'doctors', DoctorViewSet, basename="doctor")
 # router.register(r'appointments', AppointmentViewSet, basename="appointment")
-from doctor_appointment.views import doctor_list, doctor, appointment_list, appointment, daily_appointments
 from django.conf.urls import include
 router = routers.DefaultRouter()
 
@@ -33,10 +32,5 @@ router = routers.DefaultRouter()
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
-    path('doctors/', doctor_list),
-    path('doctors/<int:pk>/', doctor),
-    path('appointment/<int:pk>/', appointment),
-    path('doctors/<int:pk>/appointments/', appointment_list),
-    path('appointments/', include('rest_framework.urls', namespace='appointments')),
     path('fotomoto/', views.index, name='index'),
 ]
