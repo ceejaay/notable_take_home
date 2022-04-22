@@ -15,6 +15,9 @@
             console.log("This isi workingf.")
             FOTOMOTO.API.showWindow(FOTOMOTO.API.PRINT, url)
         };
+    function showToolbar(url) {
+            toolbarID = FOTOMOTO.API.showToolbar('toolbar_div', url)
+        }
 
 </script>
 
@@ -24,7 +27,9 @@
         {% if i.for_sale %}
     <a href={{ i.url  }}  onclick="showCard({{ i.url }})" data-fancybox="gallery" data-caption="here is the captions {{ i.id }}" style="border: dashed blue 5px;">
 
-    <div style="background-image: url({{ i.url }}); height: 135; width: 240;"></div>
+       <!--  <div style="background-image: url({{ i.url }}); height: 135; width: 240;"></div> -->
+       <img src="{{ i.url }}" style="height: 135; width: 240;" onclick="showCard('{{ i.url }}')"/>
+       <div id="toolbar_div" style="border: gray 7px dotted;"></div>
 
     </a>
         {% else %}
@@ -32,8 +37,9 @@
        data-fancybox="gallery"
        data-caption="here is the captions {{ i.id }}"
     >
+    <img src="{{ i.url }}" style="height: 135; width: 240;"/>
 
-    <div style="background-image: url({{ i.url }}); height: 135; width: 240;"></div>
+    <!-- <div style="background-image: url({{ i.url }}); height: 135; width: 240;"></div> -->
     </a>
         {% endif %}
     {% endfor %}
