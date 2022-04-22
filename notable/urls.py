@@ -25,7 +25,6 @@ router = routers.DefaultRouter()
 # router.register(r'doctors', DoctorViewSet, basename="doctor")
 # router.register(r'appointments', AppointmentViewSet, basename="appointment")
 from django.conf.urls import include
-router = routers.DefaultRouter()
 
 
 
